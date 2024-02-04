@@ -978,7 +978,7 @@ padding:5px;
              <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="pageMatricula">
              <property name="styleSheet">
@@ -1164,7 +1164,7 @@ border-radius:20px;</string>
                          </property>
                          <property name="icon">
                           <iconset>
-                           <normaloff>../../../Downloads/vidrio-de-aumento.png</normaloff>../../../Downloads/vidrio-de-aumento.png</iconset>
+                           <normaloff>../imagenes/vidrio-de-aumento.png</normaloff>../imagenes/vidrio-de-aumento.png</iconset>
                          </property>
                         </widget>
                        </item>
@@ -1654,7 +1654,7 @@ border-radius:20px;</string>
                          </property>
                          <property name="icon">
                           <iconset>
-                           <normaloff>../../../Downloads/vidrio-de-aumento.png</normaloff>../../../Downloads/vidrio-de-aumento.png</iconset>
+                           <normaloff>../imagenes/vidrio-de-aumento.png</normaloff>../imagenes/vidrio-de-aumento.png</iconset>
                          </property>
                         </widget>
                        </item>
@@ -1965,7 +1965,7 @@ border-radius:20px;</string>
                          </property>
                          <property name="icon">
                           <iconset>
-                           <normaloff>../../../Downloads/vidrio-de-aumento.png</normaloff>../../../Downloads/vidrio-de-aumento.png</iconset>
+                           <normaloff>../imagenes/vidrio-de-aumento.png</normaloff>../imagenes/vidrio-de-aumento.png</iconset>
                          </property>
                         </widget>
                        </item>
