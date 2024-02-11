@@ -1,4 +1,4 @@
-from Contraladores.alumnos import*
+from Controladores.alumnos import*
 from BD.conexion import*
 conn = ConexionMysql()
 class ArregloAlumnos:

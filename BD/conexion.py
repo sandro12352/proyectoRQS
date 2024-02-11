@@ -3,6 +3,7 @@ from mysql.connector import Error
 
 
 class ConexionMysql:
+    
     def __init__(self):
         try:
             self.conexion = mysql.connector.connect(
@@ -16,41 +17,53 @@ class ConexionMysql:
         except Error as ex:
             print("Fallo la conexion ",ex)
 
-
-    def traerDatos(self):
+    def listarUsuarios(self):
         if self.conexion.is_connected:
             try:
                 cursor = self.conexion.cursor()
-                sql = "SELECT * FROM USUARIOS "
+                sql = "SELECT * FROM USUARIOS"
                 cursor.execute(sql)
                 datos = cursor.fetchall()
-                for dato in datos:
-                    print(dato)
                 return datos
             except Error as ex:
                 print("Error es : ",ex)
 
+    def agregarUsuario(self,username,contraseña):   
+        if self.conexion.is_connected:
+            try:
+                cursor = self.conexion.cursor()
+                sql = f"INSERT INTO usuarios (username,contraseña) values('{username}','{contraseña}')"
+                cursor.execute(sql)
+                self.conexion.commit()
+                cursor.close()
+                
+            except Error as ex:
+                print("Error es : ",ex)
 
+    def actualizarUsuarios(self,id,nuevaContraseña):
+        if self.conexion.is_connected:
+            try:
+                cursor = self.conexion.cursor()
+                sql = f"UPDATE USUARIOS set contraseña={nuevaContraseña} where id ={id}"
+                cursor.execute(sql)
+                self.conexion.commit()
+                cursor.close()
+            except Error as ex:
+                print("Error es : ",ex)
+
+            
     def listarMatricula(self):
         if self.conexion.is_connected:
             try:
                 cursor = self.conexion.cursor()
-                sql = "SELECT * FROM MATRICULAS ORDER BY codigo DESC"
+                sql = "SELECT * FROM MATRICULAS"
                 cursor.execute(sql)
                 datos = cursor.fetchall()
                 return datos
             except Error as ex:
                 print("Error es : ",ex)
 
-    def agregarUsuario(self,usuario):   
-        if self.conexion.is_connected:
-            try:
-                cursor = self.conexion.cursor()
-                sql = f"INSERT INTO usuarios (username,contraseña) values('{usuario[0]}','{usuario[1]}')"
-                cursor.execute(sql)
-                self.conexion.commit()
-            except Error as ex:
-                print("Error es : ",ex)
+    
 
     def listarAlumnos(self):
         if self.conexion.is_connected:
@@ -63,8 +76,6 @@ class ConexionMysql:
             
             except Error as ex:
                 print("Error es : ",ex)
-
-
 
 
 

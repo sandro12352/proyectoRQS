@@ -4,18 +4,8 @@ from Vista.ventanaPrincipal import VentanaPrincipal
 from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QDesktopServices
 from Vista.ventanaRecuperarContraseña import VentanaRecuperarContrasena
-from Vista.registrarUsuario import *
+from Vista.registrarUsuario import RegistrarUsuario
 from BD.conexion import*
-
-
-
-
-
-qtCreatorFile = "UI/login.ui" # nombre del archivo
-Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
-
-
-
 
 
 
@@ -25,6 +15,8 @@ class Login(QtWidgets.QMainWindow):
         self.setWindowIcon(QtGui.QIcon("imagenes/logo.png"))
         uic.loadUi("UI/login.ui",self)
         
+        self.datosTotal = ConexionMysql()  
+
         self.btnIniciar.clicked.connect(self.iniciarSesion)
         self.btnFacebook.clicked.connect(self.facebook)
         self.btnInstagram.clicked.connect(self.Instagram)
@@ -41,16 +33,17 @@ class Login(QtWidgets.QMainWindow):
         usuario = self.txtUsuario.text().lower()
         contraseña = self.txtPassword.text()
         self.validarDatos(usuario,contraseña)
-
+        
 
     def validarDatos(self,usuario,contraseña):
-        usuarios = conn.traerDatos()
-        print(usuarios[0])
+        usuarios = self.datosTotal.listarUsuarios()
+        print(usuarios)
         for user in usuarios:
             if usuario == user[1] and contraseña == user[2]:
                 self.close()
                 self.vprincipal = VentanaPrincipal()
-                self.vprincipal.show()
+                return self.vprincipal.showMaximized()
+                
             else:
                 self.datoscontra.setText("¡Contraseña incorrecta!")
                 self.datosusuario.setText("¡Usuario incorrecto!")
@@ -98,7 +91,8 @@ class Login(QtWidgets.QMainWindow):
 
     def olvidarContrasena(self):
         self.ventaRecuperar = VentanaRecuperarContrasena()
-        self.ventaRecuperar.show()   
+        self.ventaRecuperar.show()
+        
 
 
 

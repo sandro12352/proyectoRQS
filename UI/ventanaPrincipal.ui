@@ -555,7 +555,7 @@ border:none;</string>
          </property>
          <property name="icon">
           <iconset>
-           <normaloff>../../../Downloads/piton.png</normaloff>../../../Downloads/piton.png</iconset>
+           <normaloff>../imagenes/piton.png</normaloff>../imagenes/piton.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -978,7 +978,7 @@ padding:5px;
              <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="currentIndex">
-             <number>3</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="pageMatricula">
              <property name="styleSheet">

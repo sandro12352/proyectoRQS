@@ -221,7 +221,7 @@ background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #735ff2, stop:1 #722a
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>LOGIN IN 
+                <string>Bienvenido Inicia 
  Registrate que esperas!</string>
                </property>
                <property name="textFormat">
@@ -304,7 +304,7 @@ QLineEdit:focus{
                 </font>
                </property>
                <property name="text">
-                <string>Username:</string>
+                <string>Usuario:</string>
                </property>
               </widget>
              </item>
@@ -363,7 +363,7 @@ QLineEdit:focus{
                 </font>
                </property>
                <property name="text">
-                <string>Password:</string>
+                <string>Contraseña:</string>
                </property>
               </widget>
              </item>
@@ -377,6 +377,21 @@ QLineEdit:focus{
                </property>
                <property name="echoMode">
                 <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="datoscontra">
+               <property name="font">
+                <font>
+                 <family>Ariall</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
                </property>
               </widget>
              </item>
@@ -404,21 +419,6 @@ QLineEdit:focus{
                </property>
                <property name="text">
                 <string>¿Olvidaste tu contraseña?</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="datoscontra">
-               <property name="font">
-                <font>
-                 <family>Ariall</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
                </property>
               </widget>
              </item>

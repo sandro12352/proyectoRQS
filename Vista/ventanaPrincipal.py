@@ -2,16 +2,12 @@ from PyQt5 import  QtWidgets, uic
 from PyQt5 import  QtCore
 from Vista.login import *
 from PyQt5.QtWidgets import QFrame, QPushButton, QTableWidgetItem, QHBoxLayout
-from Contraladores.arregloAlumnos import*
-from Contraladores.alumnos import*
+from Controladores.arregloAlumnos import*
+from Controladores.alumnos import*
 
 
 
 aAlum = ArregloAlumnos()
-
-
-
-
 
 
 class VentanaPrincipal(QtWidgets.QMainWindow):
@@ -68,17 +64,19 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
     def cerrarSession(self):
         elegir = self.cboCuenta.currentText()
         if elegir == "Cerrar":
-            
+            self.close()          
             self.ventalogin()
+            
+            
         if elegir == "Salir":
             self.close()
                 
     def ventalogin(self):
         from Vista.login import Login
-        self.ventana_login = Login()
+        self.ventana_login= Login()
         self.ventana_login.show()
-        self.close()
-    
+        
+        
         
        
     def ventanAlumnos(self):
