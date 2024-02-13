@@ -33,7 +33,7 @@ class Login(QtWidgets.QMainWindow):
         usuario = self.txtUsuario.text().lower()
         contraseña = self.txtPassword.text()
         self.validarDatos(usuario,contraseña)
-        
+       
 
     def validarDatos(self,usuario,contraseña):
         usuarios = self.datosTotal.listarUsuarios()

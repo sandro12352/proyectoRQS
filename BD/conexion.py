@@ -18,13 +18,20 @@ class ConexionMysql:
             print("Fallo la conexion ",ex)
 
     def listarUsuarios(self):
-        if self.conexion.is_connected:
+            self.conexion = mysql.connector.connect(
+                host = "localhost",
+                port = "3306",
+                user = "root",
+                password = "sandro12352*",
+                db = "proyectorqs"
+            )
             try:
                 cursor = self.conexion.cursor()
                 sql = "SELECT * FROM USUARIOS"
                 cursor.execute(sql)
-                datos = cursor.fetchall()
+                datos = cursor.fetchall()               
                 return datos
+                
             except Error as ex:
                 print("Error es : ",ex)
 
@@ -66,7 +73,7 @@ class ConexionMysql:
     
 
     def listarAlumnos(self):
-        if self.conexion.is_connected:
+        if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
                 sql = "SELECT * FROM alumnos "
@@ -77,7 +84,10 @@ class ConexionMysql:
             except Error as ex:
                 print("Error es : ",ex)
 
-
-
+        
+    def cerrar_conexion(self):
+        if self.conexion.is_connected():
+            self.conexion.close()
+            print("Conexión cerrada.")
         
 
