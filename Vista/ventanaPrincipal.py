@@ -19,20 +19,22 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         
         
         
-
+        self.btnLogut.clicked.connect(lambda:self.cboCuenta.showPopup())
         self.cboCuenta.currentIndexChanged.connect(self.cerrarSession)
         self.btnMenu.clicked.connect(self.mover_menu)
-        self.ventanAlumnos()
+        
         self.btnAtras.clicked.connect(self.mover_menu)
+        self.btnAlumnos.clicked.connect(self.ventanAlumnos) 
+        self.btnHome.clicked.connect(self.ventanaPrincipal)
+        self.btnPagos.clicked.connect(self.ventanaPagos)
+        self.btnMatricula.clicked.connect(self.ventaMatriculas)
+            
+        
+    def asignarCuenta(self,usuario):
+        self.btnLogut.setText(usuario + "\t\t" )
+        self.btnLogut.setStyleSheet("""QPushButton{ background:#fff; border:none;border-radius:5px; padding:3px 10px;font-size: 20px;font-family: "Georgia";}"""
+        "QPushButton:hover{background-color:#f2f2f2}")
 
-        self.btnLogut.clicked.connect(lambda:self.cboCuenta.showPopup())
-        self.btnHome.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pageHome))
-        self.btnPagos.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pagePagos))
-        self.btnMatricula.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pageMatricula))
-        
-        
-
-        
 
     def mover_menu(self):
         width = self.frame_lateral.width()
@@ -127,20 +129,27 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             
       
         # Establecer el contenedor como widget de la celda
-        self.btnAlumnos.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.pageAlumnos))   
+        self.lblTexto.setText("REGISTRA UN ALUMNO")
+        self.stackedWidget.setCurrentWidget(self.pageAlumnos)
+          
+       
 
-
-    
+    def ventanaPrincipal(self):
+        self.lblTexto.setText("INICIO")
+        self.stackedWidget.setCurrentWidget(self.pageHome)
         
     
        
     def ventaMatriculas(self):
-        pass
+        self.lblTexto.setText("MATRICULAS DE ALUMNOS")
+        self.stackedWidget.setCurrentWidget(self.pageMatricula)
 
 
 
 
-
+    def ventanaPagos(self):
+        self.lblTexto.setText("PAGOS")
+        self.stackedWidget.setCurrentWidget(self.pagePagos)
 
 
 

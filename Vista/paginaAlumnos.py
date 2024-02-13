@@ -1,2 +1,0 @@
-from Contraladores.arregloAlumnos import*
-

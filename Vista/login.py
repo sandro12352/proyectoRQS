@@ -30,7 +30,7 @@ class Login(QtWidgets.QMainWindow):
         
     # Aquí van las nuevas funciones
     def iniciarSesion(self):
-        usuario = self.txtUsuario.text().lower()
+        usuario = self.txtUsuario.text()
         contraseña = self.txtPassword.text()
         self.validarDatos(usuario,contraseña)
        
@@ -42,6 +42,7 @@ class Login(QtWidgets.QMainWindow):
             if usuario == user[1] and contraseña == user[2]:
                 self.close()
                 self.vprincipal = VentanaPrincipal()
+                self.vprincipal.asignarCuenta(usuario)
                 return self.vprincipal.showMaximized()
                 
             else:
