@@ -84,10 +84,20 @@ class ConexionMysql:
             except Error as ex:
                 print("Error es : ",ex)
 
-        
-    def cerrar_conexion(self):
+
+    def registrarAlumno(self,nombres,apellidos,nombre_padre,nombre_madre,dni,telefono,direccion):
         if self.conexion.is_connected():
-            self.conexion.close()
-            print("Conexión cerrada.")
-        
+            try:
+                cursor = self.conexion.cursor()
+                sql = f"INSERT INTO alumnos (nombres,apellidos,nombre_padre,nombre_madre,dni,telefono,direccion) values ('{nombres}','{apellidos}','{nombre_padre}','{nombre_madre}','{dni}','{telefono}','{direccion}')"
+                cursor.execute(sql)
+                self.conexion.commit()
+                self.listarAlumnos()
+                cursor.close()
+
+            
+            except Error as ex:
+                print("Error es : ",ex)
+
+
 

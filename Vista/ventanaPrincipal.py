@@ -2,6 +2,7 @@ from PyQt5 import  QtWidgets, uic
 from PyQt5 import  QtCore
 from Vista.login import *
 from PyQt5.QtWidgets import QFrame, QPushButton, QTableWidgetItem, QHBoxLayout
+from Vista.ventanaMatricula import VentanaMatricula
 from Controladores.arregloAlumnos import*
 from Controladores.alumnos import*
 
@@ -17,7 +18,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.btnAtras.setVisible(False)
         self.show()
         
-        
+        self.btnRegistrarAlumno.clicked.connect(self.abrirMatricula)
         
         self.btnLogut.clicked.connect(lambda:self.cboCuenta.showPopup())
         self.cboCuenta.currentIndexChanged.connect(self.cerrarSession)
@@ -28,7 +29,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.btnHome.clicked.connect(self.ventanaPrincipal)
         self.btnPagos.clicked.connect(self.ventanaPagos)
         self.btnMatricula.clicked.connect(self.ventaMatriculas)
-            
+        self.ventanAlumnos()   
         
     def asignarCuenta(self,usuario):
         self.btnLogut.setText(usuario + "\t\t" )
@@ -87,14 +88,15 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.tblAlumnos.setColumnCount(9)
         self.tblAlumnos.verticalHeader().setVisible(False)
         for i in range(0,aAlum.tamañoArregloAlumnos()):
-            self.tblAlumnos.setItem(i,0,QtWidgets.QTableWidgetItem(str(aAlum.devolverAlumno(i).getCodigoAlumno())))
-            self.tblAlumnos.setItem(i,1,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i).getNombresAlumno()))
-            self.tblAlumnos.setItem(i,2,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i).getApellidosAlumno()))
-            self.tblAlumnos.setItem(i,3,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i).getPadreAlumno()))
-            self.tblAlumnos.setItem(i,4,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i).getMadreAlumno()))
-            self.tblAlumnos.setItem(i,5,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i).getDniAlumno()))
-            self.tblAlumnos.setItem(i,6,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i).getTelefonoAlumno()))
-            self.tblAlumnos.setItem(i,7,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i).getDireccionAlumno()))
+            self.tblAlumnos.setItem(i,0,QtWidgets.QTableWidgetItem(str(aAlum.devolverAlumno(i)[0])))
+            self.tblAlumnos.setItem(i,1,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[1]))
+            self.tblAlumnos.setItem(i,2,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[2]))
+            self.tblAlumnos.setItem(i,3,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[3]))
+            self.tblAlumnos.setItem(i,4,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[4]))
+            self.tblAlumnos.setItem(i,5,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[5]))
+            self.tblAlumnos.setItem(i,6,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[6]))
+            self.tblAlumnos.setItem(i,7,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[7]))
+            
             
             
              #crear un cotenedor para el boton dentro del item
@@ -131,8 +133,14 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         # Establecer el contenedor como widget de la celda
         self.lblTexto.setText("REGISTRA UN ALUMNO")
         self.stackedWidget.setCurrentWidget(self.pageAlumnos)
-          
-       
+
+    def abrirMatricula(self):
+        self.ventaMatricula =  VentanaMatricula() 
+        self.ventaMatricula.show()
+
+    def limpiarTablaAlumnos(self):
+        self.tblAlumnos.clearContents()
+        self.tblAlumnos.setRowCount(0)
 
     def ventanaPrincipal(self):
         self.lblTexto.setText("INICIO")

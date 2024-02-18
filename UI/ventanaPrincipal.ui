@@ -873,7 +873,7 @@ QPushButton:hover{
 </string>
                   </property>
                   <property name="text">
-                   <string>MI CUENTA  </string>
+                   <string/>
                   </property>
                   <property name="icon">
                    <iconset>
@@ -1643,7 +1643,7 @@ border-radius:20px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton">
+                     <widget class="QPushButton" name="btnRegistrarAlumno">
                       <property name="minimumSize">
                        <size>
                         <width>130</width>

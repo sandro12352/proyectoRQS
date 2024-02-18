@@ -37,7 +37,6 @@ class Login(QtWidgets.QMainWindow):
 
     def validarDatos(self,usuario,contraseña):
         usuarios = self.datosTotal.listarUsuarios()
-        print(usuarios)
         for user in usuarios:
             if usuario == user[1] and contraseña == user[2]:
                 self.close()

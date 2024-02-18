@@ -1,25 +1,12 @@
 from Controladores.alumnos import*
 from BD.conexion import*
 conn = ConexionMysql()
+
 class ArregloAlumnos:
 
         def __init__(self):
-            self.dataAlumnos = []
-            self.cargar()
-
-        def cargar(self):
-            datos = conn.listarAlumnos()
-            for dato in datos:
-                codigo = dato[0] 
-                nombres = dato[1]
-                apellidos = dato[2]
-                padre = dato[3]
-                madre=dato[4]
-                dni = dato[5]
-                telefono =dato[6]
-                direccion = dato[7]
-                objAlum = Alumnos(codigo,nombres,apellidos,padre,madre,dni,telefono,direccion)  
-                self.registrarAlumno(objAlum)
+            self.dataAlumnos = conn.listarAlumnos()
+           
       
              
         
