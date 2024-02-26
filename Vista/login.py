@@ -4,7 +4,7 @@ from Vista.ventanaPrincipal import VentanaPrincipal
 from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QDesktopServices
 from Vista.ventanaRecuperarContraseña import VentanaRecuperarContrasena
-from Vista.registrarUsuario import RegistrarUsuario
+from Vista.venatanaRegistrarUsuario import RegistrarUsuario
 from BD.conexion import*
 
 

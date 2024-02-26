@@ -1,20 +1,21 @@
 from PyQt5 import  QtWidgets, uic
 from PyQt5 import  QtCore
 from Vista.login import *
-from PyQt5.QtWidgets import QFrame, QPushButton, QTableWidgetItem, QHBoxLayout
+from Controladores.style import*
 from Vista.ventanaMatricula import VentanaMatricula
 from Controladores.arregloAlumnos import*
 from Controladores.alumnos import*
 
 
 
-aAlum = ArregloAlumnos()
+
 
 
 class VentanaPrincipal(QtWidgets.QMainWindow):
     def __init__(self, parent = None):
         super(VentanaPrincipal, self).__init__(parent)
-        uic.loadUi("UI/ventanaPrincipal.ui", self)        
+        uic.loadUi("UI/ventanaPrincipal.ui", self)       
+
         self.btnAtras.setVisible(False)
         self.show()
         
@@ -22,14 +23,29 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         
         self.btnLogut.clicked.connect(lambda:self.cboCuenta.showPopup())
         self.cboCuenta.currentIndexChanged.connect(self.cerrarSession)
+
+        #BARRA DE MENU DESPEGABLE
         self.btnMenu.clicked.connect(self.mover_menu)
-        
         self.btnAtras.clicked.connect(self.mover_menu)
-        self.btnAlumnos.clicked.connect(self.ventanAlumnos) 
+
+        # pageAlumnos 
+        self.btnAlumnos.clicked.connect(self.ventanAlumnos)
+        #BOTONES DEL pageAlumnos 
+        self.btnActualizar.clicked.connect(self.actualziarTablaAlumnos)
+        self.txtBuscar.returnPressed.connect(self.buscarAlmuno)
+
+        #pagePrincipal
         self.btnHome.clicked.connect(self.ventanaPrincipal)
+
+        #pagePagos
         self.btnPagos.clicked.connect(self.ventanaPagos)
+
+        #pageMatriculas
         self.btnMatricula.clicked.connect(self.ventaMatriculas)
-        self.ventanAlumnos()   
+
+        #pageDocentes
+        self.btnDocentes.clicked.connect(self.ventanaDocentes)
+         
         
     def asignarCuenta(self,usuario):
         self.btnLogut.setText(usuario + "\t\t" )
@@ -84,6 +100,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
        
     def ventanAlumnos(self):
         #asignar filas y columna  
+        aAlum = ArregloAlumnos()
         self.tblAlumnos.setRowCount(aAlum.tamañoArregloAlumnos())
         self.tblAlumnos.setColumnCount(9)
         self.tblAlumnos.verticalHeader().setVisible(False)
@@ -96,41 +113,13 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
             self.tblAlumnos.setItem(i,5,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[5]))
             self.tblAlumnos.setItem(i,6,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[6]))
             self.tblAlumnos.setItem(i,7,QtWidgets.QTableWidgetItem(aAlum.devolverAlumno(i)[7]))
-            
-            
-            
-             #crear un cotenedor para el boton dentro del item
-            container_widget = QFrame()
-            container_layout = QHBoxLayout(container_widget)
 
-            #crear botones
-            botonVer = QPushButton("VER", container_widget)
-            botonActualizar = QPushButton("EDITAR", container_widget)
-            botonEliminar = QPushButton("ELIMINAR", container_widget)
-        
-            botonVer.setCursor(QtCore.Qt.PointingHandCursor)
-            botonActualizar.setCursor(QtCore.Qt.PointingHandCursor)
-            botonEliminar.setCursor(QtCore.Qt.PointingHandCursor)
-
-            botonVer.setFixedSize(120, 40)
-            botonActualizar.setFixedSize(120, 40)
-            botonEliminar.setFixedSize(120, 40)
-
-            botonActualizar.setStyleSheet("QPushButton{ background-color:#1877f2; margin-bottom:2px;border-radius:10px;font-size:15px;color:#fff}"
-                                "QPushButton:hover{background-color:#4267b2}")
-            botonVer.setStyleSheet("QPushButton{ background-color:#B49C09; margin-bottom:2px;border-radius:10px;font-size:15px;color:#fff}"
-                                "QPushButton:hover{background-color:#4267b2;}")
-            botonEliminar.setStyleSheet("QPushButton{ background-color:#d34; margin-bottom:2px;border-radius:10px ;font-size:15px;color:#fff}"
-                                "QPushButton:hover{background-color:#4267b2;}")
- 
-            container_layout.addWidget(botonVer)
-            container_layout.addWidget(botonActualizar)
-            container_layout.addWidget(botonEliminar)
-            
+            # Establecer el contenedor como widget de la celda
+            container_widget = botenesAcciones()      
             self.tblAlumnos.setCellWidget(i, 8, container_widget)
             
       
-        # Establecer el contenedor como widget de la celda
+       #
         self.lblTexto.setText("REGISTRA UN ALUMNO")
         self.stackedWidget.setCurrentWidget(self.pageAlumnos)
 
@@ -138,9 +127,42 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.ventaMatricula =  VentanaMatricula() 
         self.ventaMatricula.show()
 
+    def actualziarTablaAlumnos(self):
+        self.limpiarTablaAlumnos()
+        self.ventanAlumnos()
+
     def limpiarTablaAlumnos(self):
         self.tblAlumnos.clearContents()
         self.tblAlumnos.setRowCount(0)
+
+
+    def buscarAlmuno(self):     
+        consulta = self.txtBuscar.text().strip()  # Obtener el texto del QLineEdit y eliminar espacios en blanco al principio y al final   
+        
+        if consulta:
+            nombre, *apellido = consulta.split(maxsplit=1)  # Dividir la cadena en dos partes, máximo 1 split
+            apellido = apellido[0] if apellido else ""
+            alumno = conn.buscarAlumno(nombre,apellido)
+            self.limpiarTablaAlumnos()
+            self.tblAlumnos.setRowCount(len(alumno))
+            self.tblAlumnos.verticalHeader().setVisible(False)
+            for i in range(0,len(alumno)):
+                self.tblAlumnos.setItem(i,0,QtWidgets.QTableWidgetItem(str(alumno[i][0])))
+                self.tblAlumnos.setItem(i,1,QtWidgets.QTableWidgetItem(alumno[i][1]))
+                self.tblAlumnos.setItem(i,2,QtWidgets.QTableWidgetItem(alumno[i][2]))
+                self.tblAlumnos.setItem(i,3,QtWidgets.QTableWidgetItem(alumno[i][3]))
+                self.tblAlumnos.setItem(i,4,QtWidgets.QTableWidgetItem(alumno[i][4]))
+                self.tblAlumnos.setItem(i,5,QtWidgets.QTableWidgetItem(alumno[i][5]))
+                self.tblAlumnos.setItem(i,6,QtWidgets.QTableWidgetItem(alumno[i][6]))
+                self.tblAlumnos.setItem(i,7,QtWidgets.QTableWidgetItem(alumno[i][7]))
+                container_widget = botenesAcciones()
+                self.tblAlumnos.setCellWidget(i, 8, container_widget)
+        
+            
+        else:
+            QtWidgets.QMessageBox.information(self,"Buscar alumno","Usuario no encontrado",QtWidgets.QMessageBox.Ok)    
+
+    
 
     def ventanaPrincipal(self):
         self.lblTexto.setText("INICIO")
@@ -160,7 +182,9 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.stackedWidget.setCurrentWidget(self.pagePagos)
 
 
-
+    def ventanaDocentes(self):
+        self.lblTexto.setText("DOCENTES")
+        self.stackedWidget.setCurrentWidget(self.pageDocentes)
 
 
 

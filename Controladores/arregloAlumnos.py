@@ -6,10 +6,6 @@ class ArregloAlumnos:
 
         def __init__(self):
             self.dataAlumnos = conn.listarAlumnos()
-           
-      
-             
-        
         
         def registrarAlumno(self,objAlum):
            self.dataAlumnos.append(objAlum)
@@ -20,7 +16,7 @@ class ArregloAlumnos:
         def tamañoArregloAlumnos(self):
              return len(self.dataAlumnos)
         
-        def buscarCliente(self,dni):
+        def buscarAlumno(self,dni):
             for i in range(len(self.tamañoArregloAlumnos())):
                  if dni == self.dataAlumnos[i].getdniAlumno():
                        return i

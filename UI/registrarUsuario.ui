@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>514</width>
-    <height>767</height>
+    <height>843</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:#fff</string>
+       <string notr="true">background:#668;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -94,16 +94,16 @@ NO ESPERES MAS...</string>
      <widget class="QFrame" name="frame_inferior">
       <property name="styleSheet">
        <string notr="true">#frame_inferior{
-	background:#668;
+	background:#ffffff
 	
 }
 .QLabel{
-color:#fff;
+color:#000;
 
 }
 
 .QLineEdit{
-	background-color: #fff;
+	background-color: #DED9FA;
 	border:none;
 	padding:4px;
 	border-bottom:1.5px solid #111;
@@ -124,7 +124,7 @@ color:#fff;
 }
 
 .QPushButton:hover{
-	background:#9813FC;
+	background:#667;
 	
 }
 
@@ -152,7 +152,199 @@ color:#fff;
        <property name="bottomMargin">
         <number>20</number>
        </property>
-       <item alignment="Qt::AlignHCenter">
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="font">
+             <font>
+              <family>Palatino Linotype.</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>true</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(170, 85, 255);</string>
+            </property>
+            <property name="text">
+             <string>Datos del Empleado:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignVCenter">
+        <widget class="QFrame" name="frame_5">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="font">
+             <font>
+              <family>Palatino Linotype.</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Nombres:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtNombres">
+            <property name="font">
+             <font>
+              <family>Palatino Linotype.</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_9">
+            <property name="font">
+             <font>
+              <family>Palatino Linotype.</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Apelldios</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txtApellidos">
+            <property name="font">
+             <font>
+              <family>Palatino Linotype.</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="font">
+             <font>
+              <family>Palatino Linotype.</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Elija un cargo:</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignLeft">
+           <widget class="QComboBox" name="cboCargo">
+            <property name="font">
+             <font>
+              <family>Palatino Linotype.</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <item>
+             <property name="text">
+              <string>Profesor</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Administradora</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Directora</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Asesor</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="font">
+             <font>
+              <family>Palatino Linotype.</family>
+              <pointsize>14</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(170, 85, 255);</string>
+            </property>
+            <property name="text">
+             <string>Creacion de Cuenta:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignVCenter">
         <widget class="QFrame" name="frame">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -166,6 +358,12 @@ color:#fff;
            <height>0</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Palatino Linotype.</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -174,26 +372,26 @@ color:#fff;
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <property name="spacing">
-           <number>0</number>
+           <number>9</number>
           </property>
           <property name="leftMargin">
-           <number>5</number>
+           <number>9</number>
           </property>
           <property name="topMargin">
-           <number>30</number>
+           <number>9</number>
           </property>
           <property name="rightMargin">
-           <number>0</number>
+           <number>9</number>
           </property>
           <property name="bottomMargin">
-           <number>30</number>
+           <number>9</number>
           </property>
           <item>
            <widget class="QLabel" name="label_2">
             <property name="font">
              <font>
               <family>Palatino Linotype.</family>
-              <pointsize>15</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
@@ -206,7 +404,7 @@ color:#fff;
             <property name="font">
              <font>
               <family>Palatino Linotype.</family>
-              <pointsize>14</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="cursor">
@@ -219,7 +417,7 @@ color:#fff;
             <property name="font">
              <font>
               <family>Palatino Linotype.</family>
-              <pointsize>15</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
@@ -232,7 +430,7 @@ color:#fff;
             <property name="font">
              <font>
               <family>Palatino Linotype.</family>
-              <pointsize>14</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="echoMode">
@@ -245,7 +443,7 @@ color:#fff;
             <property name="font">
              <font>
               <family>Palatino Linotype.</family>
-              <pointsize>15</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
@@ -258,7 +456,7 @@ color:#fff;
             <property name="font">
              <font>
               <family>Palatino Linotype.</family>
-              <pointsize>14</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="echoMode">
@@ -322,7 +520,7 @@ color:#fff;
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="btnConfirmar">
             <property name="minimumSize">
              <size>
               <width>120</width>

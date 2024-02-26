@@ -31,8 +31,21 @@ class RegistrarUsuario(QtWidgets.QMainWindow):
             return ""
     
     
+
+    def registrarEmpleado(self):
+        nombres = self.txtNombres.text()
+        apellidos = self.txtApellidos.text()
+        cargo = self.cboCargo.currentText()
+
+        self.datosTotales.agregarEmpleados(nombres,apellidos,cargo)    
+
+
+
+
+
+
     def registrarNewUsuario(self):
-        
+        self.registrarEmpleado()
         username = self.txtUsuario.text()
         password= self.txtPassword.text()
         confimarPassowrd = self.txtConfirmarCon.text()

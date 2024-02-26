@@ -1,7 +1,7 @@
 from Controladores.alumnos import*
 from Vista.login import *
 from PyQt5 import  QtWidgets, uic
-from Vista.registrarUsuario import*
+from Vista.venatanaRegistrarUsuario import*
 from BD.conexion import*
 
 

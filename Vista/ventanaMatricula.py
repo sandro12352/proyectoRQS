@@ -36,7 +36,7 @@ class VentanaMatricula(QtWidgets.QMainWindow):
         conn.registrarAlumno(nombres,apellidos,nombre_padre,nombre_madre,dni,telefono,direccion)
         QtWidgets.QMessageBox.information(self,"Mensaje","REGISTRADO",QtWidgets.QMessageBox.Ok)
         self.limpiarDatos()
-        self.alumnoRegistrado.emit()
+        
 
     
     def limpiarDatos(self):
