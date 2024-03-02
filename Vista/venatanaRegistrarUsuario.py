@@ -1,11 +1,14 @@
 from Controladores.alumnos import*
+from Controladores.usuarios import*
 from Vista.login import *
 from PyQt5 import  QtWidgets, uic
 from BD.conexion import*
+from Controladores.arregloEmpleados import*
+from Controladores.arregloUsuarios import*
 
 
-
-
+aEmpleado = ArregloEmpleados()
+aUsuarios = ArregloUsuarios()
 
 class RegistrarUsuario(QtWidgets.QMainWindow):
     def __init__(self, parent = None):
@@ -33,22 +36,24 @@ class RegistrarUsuario(QtWidgets.QMainWindow):
     
 
     def registrarEmpleado(self):
+        idEmpleado = int(aEmpleado.tamañoEmpleados() + 1)
         nombres = self.txtNombres.text()
-        apellidos = self.txtApellidos.text()
+        apellidos = self.txtApellidos.text().strip()
         cargo = self.cboCargo.currentText()
-
-        self.datosTotales.agregarEmpleados(nombres,apellidos,cargo)    
-
-
-
+        dni = self.txtDni.text()
+        objEmpleado = Empleados(idEmpleado,nombres,apellidos,dni,cargo)
+        self.datosTotales.agregarEmpleados(objEmpleado) 
+        return idEmpleado
 
 
 
     def registrarNewUsuario(self):
-        self.registrarEmpleado()
+        id_empleado  =self.registrarEmpleado()
+        id_usuario = int(aUsuarios.tamañoUsuarios()+1)
         username = self.txtUsuario.text()
         password= self.txtPassword.text()
         confimarPassowrd = self.txtConfirmarCon.text()
+        
         #Lista todos los usuarios de la BD
         usuarios = self.datosTotales.listarUsuarios()
         #Hacemos un recorrido a la lista usuarios y comparamos el username con la posicion 1 para verificar si ya existe
@@ -58,8 +63,10 @@ class RegistrarUsuario(QtWidgets.QMainWindow):
         
 
         if self.validar() == "" :
-            if confimarPassowrd == password:                          
-                    self.datosTotales.agregarUsuario(username,password)
+            if confimarPassowrd == password:  
+                    objUsuario = Usuarios(id_usuario,username,password)   
+                    print(id_empleado)                     
+                    self.datosTotales.agregarUsuario(objUsuario,id_empleado)
                     self.txtUsuario.clear()
                     self.txtPassword.clear()
                     self.txtConfirmarCon.clear()

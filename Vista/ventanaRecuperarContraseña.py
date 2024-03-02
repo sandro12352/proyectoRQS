@@ -25,12 +25,10 @@ class VentanaRecuperarContrasena(QtWidgets.QMainWindow):
     def cambiar(self):
         username = self.txtUsername.text()
         contraseña = self.txtNuevaCon.text()
-        usuarios = self.data.listarUsuarios()
-        id = -1
+        usuarios = aUsuarios.dataUsuarios
         for user in usuarios:
             if username == user[1]:
-                id = user[0]
-
+                id =  user[0]
 
         if username !="" and contraseña != "":
             if id  !=-1:

@@ -35,11 +35,11 @@ class ConexionMysql:
             except Error as ex:
                 print("Error es : ",ex)
 
-    def agregarUsuario(self,username,contraseña):   
+    def agregarUsuario(self,objUsuario,id_empleado):   
         if self.conexion.is_connected:
             try:
                 cursor = self.conexion.cursor()
-                sql = f"INSERT INTO usuarios (username,contraseña) values('{username}','{contraseña}')"
+                sql = f"INSERT INTO usuarios (idUsuario,id_empleado,username,contraseña) values({objUsuario.getIdUsuario()},{id_empleado},'{objUsuario.getUsername()}','{objUsuario.getContraseña()}')"
                 cursor.execute(sql)
                 self.conexion.commit()
                 cursor.close()
@@ -55,7 +55,7 @@ class ConexionMysql:
                 user = "root",
                 password = "sandro12352*",
                 db = "proyectorqs"
-                )
+            )
         try:
             cursor = self.conexion.cursor()
             sql = "SELECT * FROM empleados"
@@ -66,15 +66,16 @@ class ConexionMysql:
         except Error as ex:
             print("Error es : ",ex)
 
-    def agregarEmpleados(self,nombres,apellidos,cargo):
+    def agregarEmpleados(self,objEmpleado):
         if self.conexion.is_connected:
             try:
                 cursor = self.conexion.cursor()
-                sql = f"INSERT INTO empleados (nombres,apellidos,cargo) values('{nombres}','{apellidos}','{cargo}')"
+                sql = f"INSERT INTO empleados (idEmpleado,nombres,apellidos,dni,cargo) values({objEmpleado.getIdEmpleado()},'{objEmpleado.getNombresEmpleado()}','{objEmpleado.getApellidosEmpleado()}','{objEmpleado.getDniEmpleado()}','{objEmpleado.getCargoEmpleado()}')"
                 cursor.execute(sql)
-                self.conexion.commit()
+                self.conexion.commit()                
                 cursor.close()
                 
+               
             except Error as ex:
                 print("Error es : ",ex)
 
@@ -82,7 +83,7 @@ class ConexionMysql:
         if self.conexion.is_connected:
             try:
                 cursor = self.conexion.cursor()
-                sql = f"UPDATE USUARIOS set contraseña={nuevaContraseña} where id ={id}"
+                sql = f"UPDATE USUARIOS set contraseña={nuevaContraseña} where idUsuario ={id}"
                 cursor.execute(sql)
                 self.conexion.commit()
                 cursor.close()
@@ -126,7 +127,7 @@ class ConexionMysql:
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sql = f"INSERT INTO alumnos (nombres,apellidos,nombre_padre,nombre_madre,dni,telefono,direccion) values ('{nombres}','{apellidos}','{nombre_padre}','{nombre_madre}','{dni}','{telefono}','{direccion}')"
+                sql = f"INSERT INTO alumnos (nombres,apellidos,padre,madre,dni,telefono,direccion,fechaNacimiento,sexo,paisNacimiento,idApoderado) values ('{nombres}','{apellidos}','{nombre_padre}','{nombre_madre}','{dni}','{telefono}','{direccion}')"
                 cursor.execute(sql)
                 self.conexion.commit()
                 cursor.close()

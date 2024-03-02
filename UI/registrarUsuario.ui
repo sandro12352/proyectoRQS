@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>514</width>
-    <height>843</height>
+    <height>909</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -250,52 +250,111 @@ color:#000;
             <property name="font">
              <font>
               <family>Palatino Linotype.</family>
-              <pointsize>11</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_10">
-            <property name="font">
-             <font>
-              <family>Palatino Linotype.</family>
-              <pointsize>12</pointsize>
-             </font>
+           <widget class="QFrame" name="frame_6">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
             </property>
-            <property name="text">
-             <string>Elija un cargo:</string>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
             </property>
-           </widget>
-          </item>
-          <item alignment="Qt::AlignLeft">
-           <widget class="QComboBox" name="cboCargo">
-            <property name="font">
-             <font>
-              <family>Palatino Linotype.</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <item>
-             <property name="text">
-              <string>Profesor</string>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="leftMargin">
+              <number>0</number>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Administradora</string>
+             <property name="topMargin">
+              <number>9</number>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Directora</string>
+             <property name="rightMargin">
+              <number>0</number>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Asesor</string>
+             <property name="bottomMargin">
+              <number>9</number>
              </property>
-            </item>
+             <item alignment="Qt::AlignLeft">
+              <widget class="QLabel" name="label_11">
+               <property name="font">
+                <font>
+                 <family>Palatino Linotype.</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>DNI:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="txtDni">
+               <property name="font">
+                <font>
+                 <family>Palatino Linotype.</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignRight">
+              <widget class="QLabel" name="label_10">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Palatino Linotype.</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Elija un cargo:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="cboCargo">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Palatino Linotype.</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Profesor</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Administradora</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Directora</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Asesor</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
