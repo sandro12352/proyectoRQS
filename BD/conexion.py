@@ -17,6 +17,26 @@ class ConexionMysql:
         except Error as ex:
             print("Fallo la conexion ",ex)
 
+
+
+    def listarEmpleados(self):
+            self.conexion = mysql.connector.connect(
+                host = "localhost",
+                port = "3306",
+                user = "root",
+                password = "sandro12352*",
+                db = "proyectorqs"
+            )
+            try:
+                cursor = self.conexion.cursor()
+                sql = "SELECT * FROM empleados"
+                cursor.execute(sql)
+                datos = cursor.fetchall()             
+                return datos
+                
+            except Error as ex:
+                print("Error es : ",ex)
+
     def listarUsuarios(self):
             self.conexion = mysql.connector.connect(
                 host = "localhost",
@@ -35,11 +55,18 @@ class ConexionMysql:
             except Error as ex:
                 print("Error es : ",ex)
 
-    def agregarUsuario(self,objUsuario,id_empleado):   
+    def agregarUsuario(self,objUsuario,id_empleado):  
+        self.conexion = mysql.connector.connect(
+                host = "localhost",
+                port = "3306",
+                user = "root",
+                password = "sandro12352*",
+                db = "proyectorqs"
+            ) 
         if self.conexion.is_connected:
             try:
                 cursor = self.conexion.cursor()
-                sql = f"INSERT INTO usuarios (idUsuario,id_empleado,username,contraseña) values({objUsuario.getIdUsuario()},{id_empleado},'{objUsuario.getUsername()}','{objUsuario.getContraseña()}')"
+                sql = f"INSERT INTO usuarios (username,contraseña,idEmpleadoUsuario) values('{objUsuario.getUsername()}','{objUsuario.getContraseña()}',{id_empleado})"
                 cursor.execute(sql)
                 self.conexion.commit()
                 cursor.close()
@@ -48,33 +75,24 @@ class ConexionMysql:
                 print("Error es : ",ex)
     
 
-    def listarEmpleados(self):
-        self.conexion = mysql.connector.connect(
+    
+
+    def agregarEmpleados(self,objEmpleado):
+            self.conexion = mysql.connector.connect(
                 host = "localhost",
                 port = "3306",
                 user = "root",
                 password = "sandro12352*",
                 db = "proyectorqs"
-            )
-        try:
-            cursor = self.conexion.cursor()
-            sql = "SELECT * FROM empleados"
-            cursor.execute(sql)
-            datos = cursor.fetchall()               
-            return datos
-                
-        except Error as ex:
-            print("Error es : ",ex)
-
-    def agregarEmpleados(self,objEmpleado):
-        if self.conexion.is_connected:
+            ) 
             try:
                 cursor = self.conexion.cursor()
-                sql = f"INSERT INTO empleados (idEmpleado,nombres,apellidos,dni,cargo) values({objEmpleado.getIdEmpleado()},'{objEmpleado.getNombresEmpleado()}','{objEmpleado.getApellidosEmpleado()}','{objEmpleado.getDniEmpleado()}','{objEmpleado.getCargoEmpleado()}')"
+                sql = f"INSERT INTO empleados (nombres,apellidos,dni,cargo) values('{objEmpleado.getNombresEmpleado()}','{objEmpleado.getApellidosEmpleado()}','{objEmpleado.getDniEmpleado()}','{objEmpleado.getCargoEmpleado()}')"
                 cursor.execute(sql)
+                id_empleado = cursor.lastrowid
                 self.conexion.commit()                
                 cursor.close()
-                
+                return id_empleado
                
             except Error as ex:
                 print("Error es : ",ex)

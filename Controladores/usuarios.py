@@ -1,11 +1,7 @@
 class Usuarios:
-    def __init__(self,id_usuario,username,contraseña):
-        self.__id = id_usuario
+    def __init__(self,username,contraseña):
         self.__username =username
         self.__contraseña = contraseña
-        
-    def getIdUsuario(self):
-        return self.__id
 
     def getUsername(self):
         return self.__username

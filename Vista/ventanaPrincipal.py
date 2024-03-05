@@ -19,7 +19,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
         self.btnAtras.setVisible(False)
         self.show()
         
-        self.btnRegistrarAlumno.clicked.connect(self.abrirMatricula)
+        self.btnRegistrarMatricula.clicked.connect(self.abrirMatricula)
         
         self.btnLogut.clicked.connect(lambda:self.cboCuenta.showPopup())
         self.cboCuenta.currentIndexChanged.connect(self.cerrarSession)

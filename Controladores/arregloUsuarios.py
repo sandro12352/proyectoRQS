@@ -1,6 +1,6 @@
 from Controladores import usuarios
 from BD.conexion import*
-
+from Controladores.arregloEmpleados import*
 conn = ConexionMysql()
 
 class ArregloUsuarios:

@@ -1,13 +1,11 @@
 class Empleados:
-    def __init__(self,idEmpleado,nombres,apellidos,dni,cargo):
-        self.__id = idEmpleado
+    def __init__(self,nombres,apellidos,dni,cargo):
         self.__nombres = nombres
         self.__apellidos = apellidos
         self.__dni = dni
         self.__cargo = cargo
 
-    def getIdEmpleado(self):
-        return self.__id
+ 
 
     def getNombresEmpleado(self):
         return self.__nombres
